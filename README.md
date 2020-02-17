@@ -1,2 +1,2 @@
-# tfe-gopy
+# tfegopy
 terraform enterprise api tool
