@@ -2,6 +2,7 @@
 
 import os
 import re
+from pprint import pprint as pp
 import requests
 import json
 import pyterprise
@@ -24,8 +25,24 @@ def get_token(tfe_host):
         raise
 
 
+def get_env_config(env):
+    try:
+        with open('env_configs.json', 'r') as file:
+            env_confs = json.load(file)
+        env_conf = env_confs['envs'][env]
+        return env_conf
+    except:
+        print('could not open env_configs.json in the current directory')
+        raise
+
+
 def main():
-    tfe_host = 'app.terraform.io'
+    env_conf = get_env_config('dev')
+    tfe_host = env_conf['tfe_host']
+    tfe_org = env_conf['tfe_org']
+    tfe_vcs_oauth_token_id = env_conf['tfe_vcs_oauth_token_id']
+    pp(env_conf)
+    # your secret tfe api token
     tfe_token = get_token(tfe_host)
     print(tfe_token)
 

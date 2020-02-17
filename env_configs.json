@@ -1,0 +1,21 @@
+{
+    "default": "dev",
+    "envs": {
+        "dev": {
+            "name": "dev",
+            "tfe_host": "app.terraform.io",
+            "tfe_org": "jayers99",
+            "tfe_vcs_oauth_token_id": "ot-2Fp4ic3dMDpxN8ZH",
+            "github_host": "github.com",
+            "github_org": "jayers99"
+        },
+        "prod": {
+            "name": "prod",
+            "tfe_host": "app.terraform.io",
+            "tfe_org": "jayers99",
+            "tfe_vcs_oauth_token_id": "ot-2Fp4ic3dMDpxN8ZH",
+            "github_host": "github.com",
+            "github_org": "jayers99"
+        }
+    }
+}
