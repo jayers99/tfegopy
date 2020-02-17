@@ -27,8 +27,8 @@ def get_token(tfe_host):
 
 def get_env_config(env):
     try:
-        with open('env_configs.json', 'r') as file:
-            env_confs = json.load(file)
+        with open('env_configs.json', mode='rt', encoding='UTF-8') as f:
+            env_confs = json.load(f)
         env_conf = env_confs['envs'][env]
         return env_conf
     except:
