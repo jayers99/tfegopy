@@ -15,11 +15,11 @@ def get_token(tfe_host):
     try:
         with open(tfrc_path, 'r') as file:
             tfrc_content = file.read()
-        token_block_regex = '^\s*(?!#)\s*credentials\s\"' + tfe_host + '\"\s\{\s*token\s=\s\"[a-zA-Z0-9\.]+\"\s*\}'
+        token_block_regex = r'^\s*(?!#)\s*credentials\s\"' + tfe_host + r'\"\s\{\s*token\s=\s\"[a-zA-Z0-9\.]+\"\s*\}'
         p = re.compile(token_block_regex, re.MULTILINE)
         matches = p.findall(tfrc_content)
-        token = re.sub('^\s*(?!#)\s*credentials\s\"' + tfe_host + '\"\s\{\s*token\s=\s\"', '', matches[0])
-        token = re.sub('\"\s*\}', '', token)
+        token = re.sub(r'^\s*(?!#)\s*credentials\s\"' + tfe_host + r'\"\s\{\s*token\s=\s\"', '', matches[0])
+        token = re.sub(r'\"\s*\}', '', token)
         return token
     except:
         print('could not open ~/.terraformrc')
@@ -51,10 +51,12 @@ def main():
     tfe_host = env_conf['tfe_host']
     tfe_org = env_conf['tfe_org']
     tfe_vcs_oauth_token_id = env_conf['tfe_vcs_oauth_token_id']
+    print(f'{tfe_host}/{tfe_org}')
+    print(f'{tfe_vcs_oauth_token_id}')
 
     # your secret tfe api token
     tfe_token = get_token(tfe_host)
-    #print(tfe_token)
+    print(tfe_token)
 
 
 if __name__ == '__main__':
